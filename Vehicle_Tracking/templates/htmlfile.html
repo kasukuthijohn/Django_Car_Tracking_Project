@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    body{
+      position: absolute;
+      top: 200px;
+      left: 500px;
+      background-color:pink;
+      font-size: 30px;
+    }
+    a{
+      text-transform: uppercase;
+    }
+    a:link,a:visited{
+      color:red;
+      padding: 14px 25px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    a:hover,h:active{
+      background-color: green;
+    }
+
+    </style>
+
+  </head>
+  <body>
+   {% for i in data1 %}
+   {% if i.Car_model == "Altroz" %}
+   <a href="Altroz_details">{{i.Car_model}}</a><br>
+   {% elif i.Car_model == "Benz" %}
+   <a href="Benz_details">{{i.Car_model}}</a><br>
+   {% elif i.Car_model == "BMW" %}
+   <a href="bmw">{{i.Car_model}}</a><br>
+   {% elif i.Car_model == "Dacia" %}
+   <a href="Dacia">{{i.Car_model}}</a><br>
+   {% else %}
+   <a href="Audi_details">{{i.Car_model}}</a><br>
+   {% endif %}
+   {% endfor %}
+  </body>
+</html>

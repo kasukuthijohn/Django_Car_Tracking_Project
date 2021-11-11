@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+    #id3{
+      position:absolute;
+      top:50px;
+      left:400px;
+      color:red;
+    }
+    body{
+      background-color:cyan;
+    }
+    #id1{
+      position:absolute;
+      top:200px;
+      left:400px;
+      color:blue;
+      font-style:bold;
+      font-size:20px;
+
+    }
+    #id2{
+      color:white;
+      border:none;
+      padding:15px 32px;
+      text-align:center;
+      text-decoration:none;
+      font-size:16px;
+      margin:4px 2px;
+      cursor:pointer;
+    background-color:green;
+    }
+  </style>
+</head>
+<body>
+  <div id="id3">
+    <h1>Starting Time of Vehicle : 10:00 AM</h1>
+    <h1>Ending Time of Vehicle : 22:35 PM</h1>
+  </div>
+  <div id="id1">
+  <h1>Time required to reach the destination (AP_Vijayawada from AP_Guntur):</h1>
+  <p id="demo1"></p>
+<h1>Travelled time of Vehicle: </h1>
+<p id="demo"></p>
+<button id="id2" onclick="countdownTimeStart()">Track Here</button>
+</div>
+
+<script>
+function countdownTimeStart(){
+
+var countDownDate = new Date("Nov 11, 2021 10:00:00").getTime();
+var endingtime=new Date("Nov 11 , 2022 22:35:00").getTime();
+var x = setInterval(function() {
+    var now = new Date().getTime();
+
+    var distance = Math.abs(now-countDownDate);
+    var difference=Math.abs(endingtime-now);
+
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var hours1 = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes1 = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds1 = Math.floor((difference % (1000 * 60)) / 1000);
+
+    document.getElementById("demo").innerHTML = hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    document.getElementById("demo1").innerHTML = hours1 + "h "
+    + minutes1 + "m " + seconds1 + "s ";
+
+    if (distance == 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = hours + "h "
+        + minutes + "m " + seconds + "s ";
+    }
+    if(difference  == 0){
+      clearInterval(x);
+      document.getElementById("demo1").innerHTML = "Vehicle reached destination by"+hours1+":"+minutes1+":"
+      +":"+seconds1;
+    }
+}, 1000);
+}
+</script>
+
+</body>
+</html>
